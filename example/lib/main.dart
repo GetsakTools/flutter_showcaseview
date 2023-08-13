@@ -180,7 +180,7 @@ class _MailPageState extends State<MailPage> {
                                   children: <Widget>[
                                     Showcase(
                                       key: _one,
-                                      description: 'Tap to see menu options',
+                                      descriptionWidget: const Text('Tap to see menu options'),
                                       disableDefaultTargetGestures: true,
                                       onBarrierClick: () =>
                                           debugPrint('Barrier clicked'),
@@ -221,8 +221,8 @@ class _MailPageState extends State<MailPage> {
                       targetPadding: const EdgeInsets.all(5),
                       key: _two,
                       titleWidget: const Text('Profile'),
-                      description:
-                          "Tap to see profile which contains user's name, profile picture, mobile number and country",
+                      descriptionWidget:
+                          const Text("Tap to see profile which contains user's name, profile picture, mobile number and country"),
                       tooltipBackgroundColor: Theme.of(context).primaryColor,
                       textColor: Colors.white,
                       targetShapeBorder: const CircleBorder(),
@@ -279,7 +279,7 @@ class _MailPageState extends State<MailPage> {
       floatingActionButton: Showcase(
         key: _five,
         titleWidget: const Text('Compose Mail'),
-        description: 'Click here to compose mail',
+        descriptionWidget: const Text('Click here to compose mail',),
         targetShapeBorder: const CircleBorder(),
         child: FloatingActionButton(
           backgroundColor: Theme.of(context).primaryColor,
@@ -316,7 +316,7 @@ class _MailPageState extends State<MailPage> {
         padding: const EdgeInsets.symmetric(vertical: 8),
         child: Showcase(
             key: key,
-            description: 'Tap to check mail',
+            descriptionWidget: const Text('Tap to check mail'),
             tooltipPosition: TooltipPosition.top,
             disposeOnTap: true,
             onTargetClick: () {
@@ -416,7 +416,7 @@ class MailTile extends StatelessWidget {
                     key: showCaseKey!,
                     height: 50,
                     width: 140,
-                    targetShapeBorder: const CircleBorder(),
+                    // targetShapeBorder: const CircleBorder(),
                     targetBorderRadius: const BorderRadius.all(
                       Radius.circular(150),
                     ),
