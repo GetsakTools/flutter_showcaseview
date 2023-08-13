@@ -51,7 +51,7 @@ class _DetailState extends State<Detail> {
                 children: <Widget>[
                   Showcase(
                     key: _one,
-                    title: 'Title',
+                    titleWidget: const Text('Title'),
                     description: 'Desc',
                     child: InkWell(
                       onTap: () {},

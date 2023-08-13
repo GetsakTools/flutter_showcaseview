@@ -220,7 +220,7 @@ class _MailPageState extends State<MailPage> {
                     Showcase(
                       targetPadding: const EdgeInsets.all(5),
                       key: _two,
-                      title: 'Profile',
+                      titleWidget: const Text('Profile'),
                       description:
                           "Tap to see profile which contains user's name, profile picture, mobile number and country",
                       tooltipBackgroundColor: Theme.of(context).primaryColor,
@@ -278,7 +278,7 @@ class _MailPageState extends State<MailPage> {
       ),
       floatingActionButton: Showcase(
         key: _five,
-        title: 'Compose Mail',
+        titleWidget: const Text('Compose Mail'),
         description: 'Click here to compose mail',
         targetShapeBorder: const CircleBorder(),
         child: FloatingActionButton(

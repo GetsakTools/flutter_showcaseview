@@ -34,7 +34,7 @@ class ToolTipWidget extends StatefulWidget {
   final GetPosition? position;
   final Offset? offset;
   final Size? screenSize;
-  final String? title;
+  final Widget? title;
   final TextAlign? titleAlignment;
   final String? description;
   final TextAlign? descriptionAlignment;
@@ -149,7 +149,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
             .merge(TextStyle(color: widget.textColor));
     final titleLength = widget.title == null
         ? 0
-        : _textSize(widget.title!, titleStyle).width +
+        : _textSize("tooltip", titleStyle).width +
             widget.tooltipPadding!.right +
             widget.tooltipPadding!.left +
             (widget.titlePadding?.right ?? 0) +
@@ -426,21 +426,22 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                                     Padding(
                                       padding: widget.titlePadding ??
                                           EdgeInsets.zero,
-                                      child: Text(
-                                        widget.title!,
-                                        textAlign: widget.titleAlignment,
-                                        textDirection:
-                                            widget.titleTextDirection,
-                                        style: widget.titleTextStyle ??
-                                            Theme.of(context)
-                                                .textTheme
-                                                .titleLarge!
-                                                .merge(
-                                                  TextStyle(
-                                                    color: widget.textColor,
-                                                  ),
-                                                ),
-                                      ),
+                                      child: widget.title,
+                                      // child: Text(
+                                      //   widget.title!,
+                                      //   textAlign: widget.titleAlignment,
+                                      //   textDirection:
+                                      //       widget.titleTextDirection,
+                                      //   style: widget.titleTextStyle ??
+                                      //       Theme.of(context)
+                                      //           .textTheme
+                                      //           .titleLarge!
+                                      //           .merge(
+                                      //             TextStyle(
+                                      //               color: widget.textColor,
+                                      //             ),
+                                      //           ),
+                                      // ),
                                     ),
                                   Padding(
                                     padding: widget.descriptionPadding ??

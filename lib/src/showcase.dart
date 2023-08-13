@@ -47,7 +47,7 @@ class Showcase extends StatefulWidget {
   final Widget child;
 
   /// Represents subject line of target widget
-  final String? title;
+  final Widget? titleWidget;
 
   /// Title alignment with in tooltip widget
   ///
@@ -248,7 +248,7 @@ class Showcase extends StatefulWidget {
     required this.key,
     required this.description,
     required this.child,
-    this.title,
+    this.titleWidget,
     this.titleAlignment = TextAlign.start,
     this.descriptionAlignment = TextAlign.start,
     this.targetShapeBorder = const RoundedRectangleBorder(
@@ -331,7 +331,7 @@ class Showcase extends StatefulWidget {
         scaleAnimationCurve = Curves.decelerate,
         scaleAnimationAlignment = null,
         disableScaleAnimation = null,
-        title = null,
+        titleWidget = null,
         description = null,
         titleAlignment = TextAlign.start,
         descriptionAlignment = TextAlign.start,
@@ -544,7 +544,7 @@ class _ShowcaseState extends State<Showcase> {
             position: position,
             offset: offset,
             screenSize: screenSize,
-            title: widget.title,
+            title: widget.titleWidget,
             titleAlignment: widget.titleAlignment,
             description: widget.description,
             descriptionAlignment: widget.descriptionAlignment,
