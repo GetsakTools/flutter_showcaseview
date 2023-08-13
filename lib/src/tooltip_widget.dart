@@ -35,6 +35,7 @@ class ToolTipWidget extends StatefulWidget {
   final Offset? offset;
   final Size? screenSize;
   final Widget? title;
+  final Widget? tail;
   final TextAlign? titleAlignment;
   final Widget? description;
   final TextAlign? descriptionAlignment;
@@ -48,6 +49,7 @@ class ToolTipWidget extends StatefulWidget {
   final double? contentWidth;
   final VoidCallback? onTooltipTap;
   final EdgeInsets? tooltipPadding;
+  final EdgeInsets? tooltipMargin;
   final Duration movingAnimationDuration;
   final bool disableMovingAnimation;
   final bool disableScaleAnimation;
@@ -68,6 +70,7 @@ class ToolTipWidget extends StatefulWidget {
     required this.offset,
     required this.screenSize,
     required this.title,
+    required this.tail,
     required this.titleAlignment,
     required this.description,
     required this.titleTextStyle,
@@ -82,6 +85,7 @@ class ToolTipWidget extends StatefulWidget {
     required this.movingAnimationDuration,
     required this.descriptionAlignment,
     this.tooltipPadding = const EdgeInsets.symmetric(vertical: 8),
+    this.tooltipMargin = const EdgeInsets.symmetric(horizontal: 8),
     required this.disableMovingAnimation,
     required this.disableScaleAnimation,
     required this.tooltipBorderRadius,
@@ -416,6 +420,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                             child: Container(
                               width: tooltipWidth,
                               padding: widget.tooltipPadding,
+                              margin: widget.tooltipMargin,
                               color: widget.tooltipBackgroundColor,
                               child: Column(
                                 crossAxisAlignment: widget.title != null
@@ -463,6 +468,27 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                                     //           ),
                                     // ),
                                   ),
+                                  if(widget.tail != null)
+                                    Padding(
+                                      padding: widget.titlePadding ??
+                                          EdgeInsets.zero,
+                                      child: widget.tail,
+                                      // child: Text(
+                                      //   widget.title!,
+                                      //   textAlign: widget.titleAlignment,
+                                      //   textDirection:
+                                      //       widget.titleTextDirection,
+                                      //   style: widget.titleTextStyle ??
+                                      //       Theme.of(context)
+                                      //           .textTheme
+                                      //           .titleLarge!
+                                      //           .merge(
+                                      //             TextStyle(
+                                      //               color: widget.textColor,
+                                      //             ),
+                                      //           ),
+                                      // ),
+                                    ),
                                 ],
                               ),
                             ),

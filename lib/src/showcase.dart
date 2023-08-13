@@ -49,6 +49,9 @@ class Showcase extends StatefulWidget {
   /// Represents subject line of target widget
   final Widget? titleWidget;
 
+  /// Represents actions for target
+  final Widget? tailWidget;
+
   /// Title alignment with in tooltip widget
   ///
   /// Defaults to [TextAlign.start]
@@ -85,6 +88,8 @@ class Showcase extends StatefulWidget {
   /// EdgeInsets.symmetric(vertical: 8, horizontal: 8)
   /// ```
   final EdgeInsets tooltipPadding;
+
+  final EdgeInsets tooltipMargin;
 
   /// Background color of overlay during showcase.
   ///
@@ -248,6 +253,7 @@ class Showcase extends StatefulWidget {
     required this.key,
     required this.descriptionWidget,
     required this.child,
+    this.tailWidget,
     this.titleWidget,
     this.titleAlignment = TextAlign.start,
     this.descriptionAlignment = TextAlign.start,
@@ -271,6 +277,7 @@ class Showcase extends StatefulWidget {
     this.disableScaleAnimation,
     this.tooltipPadding =
         const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+    this.tooltipMargin = const EdgeInsets.symmetric(horizontal: 8),
     this.onToolTipClick,
     this.targetPadding = EdgeInsets.zero,
     this.blurValue,
@@ -332,6 +339,7 @@ class Showcase extends StatefulWidget {
         scaleAnimationAlignment = null,
         disableScaleAnimation = null,
         titleWidget = null,
+        tailWidget = null,
         descriptionWidget = null,
         titleAlignment = TextAlign.start,
         descriptionAlignment = TextAlign.start,
@@ -341,6 +349,7 @@ class Showcase extends StatefulWidget {
         textColor = Colors.black,
         tooltipBorderRadius = null,
         tooltipPadding = const EdgeInsets.symmetric(vertical: 8),
+        tooltipMargin = const EdgeInsets.symmetric(horizontal: 8),
         titlePadding = null,
         descriptionPadding = null,
         titleTextDirection = null,
@@ -545,6 +554,7 @@ class _ShowcaseState extends State<Showcase> {
             offset: offset,
             screenSize: screenSize,
             title: widget.titleWidget,
+            tail: widget.tailWidget,
             titleAlignment: widget.titleAlignment,
             description: widget.descriptionWidget,
             descriptionAlignment: widget.descriptionAlignment,
@@ -558,6 +568,7 @@ class _ShowcaseState extends State<Showcase> {
             contentWidth: widget.width,
             onTooltipTap: _getOnTooltipTap,
             tooltipPadding: widget.tooltipPadding,
+            tooltipMargin: widget.tooltipMargin,
             disableMovingAnimation: widget.disableMovingAnimation ??
                 showCaseWidgetState.disableMovingAnimation,
             disableScaleAnimation: widget.disableScaleAnimation ??
