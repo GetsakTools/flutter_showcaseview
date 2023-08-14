@@ -418,7 +418,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                           child: GestureDetector(
                             onTap: widget.onTooltipTap,
                             child: Container(
-                              width: 250, // tooltipWidth,
+                              width: 320, // tooltipWidth,
                               padding: widget.tooltipPadding,
                               // margin: widget.tooltipMargin,
                               color: widget.tooltipBackgroundColor,
