@@ -427,6 +427,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                                     ? CrossAxisAlignment.start
                                     : CrossAxisAlignment.center,
                                 children: <Widget>[
+                                  SizedBox(height: 15,),
                                   if (widget.title != null)
                                     Padding(
                                       padding: widget.titlePadding ??
@@ -448,6 +449,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                                       //           ),
                                       // ),
                                     ),
+                                  SizedBox(height: 15,),
                                   Padding(
                                     padding: widget.descriptionPadding ??
                                         EdgeInsets.zero,
@@ -468,6 +470,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                                     //           ),
                                     // ),
                                   ),
+                                  SizedBox(height: 20,),
                                   if(widget.tail != null)
                                     Padding(
                                       padding: widget.titlePadding ??
@@ -489,6 +492,8 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                                       //           ),
                                       // ),
                                     ),
+
+                                  SizedBox(height: 30,)
                                 ],
                               ),
                             ),
