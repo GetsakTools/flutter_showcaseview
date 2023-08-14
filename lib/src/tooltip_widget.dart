@@ -63,6 +63,7 @@ class ToolTipWidget extends StatefulWidget {
   final EdgeInsets? descriptionPadding;
   final TextDirection? titleTextDirection;
   final TextDirection? descriptionTextDirection;
+  final double? widgetWidth;
 
   const ToolTipWidget({
     Key? key,
@@ -98,6 +99,7 @@ class ToolTipWidget extends StatefulWidget {
     this.descriptionPadding,
     this.titleTextDirection,
     this.descriptionTextDirection,
+    this.widgetWidth = 320,
   }) : super(key: key);
 
   @override
@@ -414,11 +416,11 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                         ),
                         child: ClipRRect(
                           borderRadius: widget.tooltipBorderRadius ??
-                              BorderRadius.circular(8.0),
+                              BorderRadius.circular(15.0),
                           child: GestureDetector(
                             onTap: widget.onTooltipTap,
                             child: Container(
-                              width: 320, // tooltipWidth,
+                              width: widget.widgetWidth,
                               padding: widget.tooltipPadding,
                               // margin: widget.tooltipMargin,
                               color: widget.tooltipBackgroundColor,
@@ -427,73 +429,27 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                                     ? CrossAxisAlignment.start
                                     : CrossAxisAlignment.center,
                                 children: <Widget>[
-                                  SizedBox(height: 15,),
+                                  const SizedBox(height: 15,),
                                   if (widget.title != null)
                                     Padding(
                                       padding: widget.titlePadding ??
                                           EdgeInsets.zero,
                                       child: widget.title,
-                                      // child: Text(
-                                      //   widget.title!,
-                                      //   textAlign: widget.titleAlignment,
-                                      //   textDirection:
-                                      //       widget.titleTextDirection,
-                                      //   style: widget.titleTextStyle ??
-                                      //       Theme.of(context)
-                                      //           .textTheme
-                                      //           .titleLarge!
-                                      //           .merge(
-                                      //             TextStyle(
-                                      //               color: widget.textColor,
-                                      //             ),
-                                      //           ),
-                                      // ),
                                     ),
-                                  SizedBox(height: 15,),
+                                  const SizedBox(height: 15,),
                                   Padding(
                                     padding: widget.descriptionPadding ??
                                         EdgeInsets.zero,
                                     child: widget.description,
-                                    // child: Text(
-                                    //   widget.description!,
-                                    //   textAlign: widget.descriptionAlignment,
-                                    //   textDirection:
-                                    //       widget.descriptionTextDirection,
-                                    //   style: widget.descTextStyle ??
-                                    //       Theme.of(context)
-                                    //           .textTheme
-                                    //           .titleSmall!
-                                    //           .merge(
-                                    //             TextStyle(
-                                    //               color: widget.textColor,
-                                    //             ),
-                                    //           ),
-                                    // ),
                                   ),
-                                  SizedBox(height: 20,),
+                                  const SizedBox(height: 20,),
                                   if(widget.tail != null)
                                     Padding(
                                       padding: widget.titlePadding ??
                                           EdgeInsets.zero,
                                       child: widget.tail,
-                                      // child: Text(
-                                      //   widget.title!,
-                                      //   textAlign: widget.titleAlignment,
-                                      //   textDirection:
-                                      //       widget.titleTextDirection,
-                                      //   style: widget.titleTextStyle ??
-                                      //       Theme.of(context)
-                                      //           .textTheme
-                                      //           .titleLarge!
-                                      //           .merge(
-                                      //             TextStyle(
-                                      //               color: widget.textColor,
-                                      //             ),
-                                      //           ),
-                                      // ),
                                     ),
-
-                                  SizedBox(height: 30,)
+                                  const SizedBox(height: 30,)
                                 ],
                               ),
                             ),

@@ -249,12 +249,15 @@ class Showcase extends StatefulWidget {
   /// will still provide a callback.
   final VoidCallback? onBarrierClick;
 
+  final double? widgetWidth;
+
   const Showcase({
     required this.key,
     required this.descriptionWidget,
     required this.child,
     this.tailWidget,
     this.titleWidget,
+    this.widgetWidth,
     this.titleAlignment = TextAlign.start,
     this.descriptionAlignment = TextAlign.start,
     this.targetShapeBorder = const RoundedRectangleBorder(
@@ -340,6 +343,7 @@ class Showcase extends StatefulWidget {
         disableScaleAnimation = null,
         titleWidget = null,
         tailWidget = null,
+        widgetWidth = 320,
         descriptionWidget = null,
         titleAlignment = TextAlign.start,
         descriptionAlignment = TextAlign.start,
@@ -584,6 +588,7 @@ class _ShowcaseState extends State<Showcase> {
             descriptionPadding: widget.descriptionPadding,
             titleTextDirection: widget.titleTextDirection,
             descriptionTextDirection: widget.descriptionTextDirection,
+            widgetWidth: widget.widgetWidth,
           ),
         ],
       ],
