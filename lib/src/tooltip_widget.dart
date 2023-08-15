@@ -388,9 +388,9 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                 type: MaterialType.transparency,
                 child: Container(
                   padding: widget.showArrow
-                      ? const EdgeInsets.only(
-                          top: 10, // paddingTop - (isArrowUp ? widget.toolTipArrowHeight - 10 : 0),
-                          bottom: 10, // paddingBottom - (isArrowUp ? 0 : widget.toolTipArrowHeight - 10),
+                      ? EdgeInsets.only(
+                          top: paddingTop - (isArrowUp ? widget.toolTipArrowHeight - 10 : 0),
+                          bottom: paddingBottom - (isArrowUp ? 0 : widget.toolTipArrowHeight - 10),
                         )
                       : null,
                   child: Stack(
