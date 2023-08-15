@@ -401,7 +401,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                           child: CustomPaint(
                             painter: _Arrow(
                               strokeColor: widget.tooltipBackgroundColor!,
-                              strokeWidth: widget.toolTipStrokeWidth,
+                              strokeWidth: widget.toolTipStrokeWidth ?? 10,
                               paintingStyle: PaintingStyle.fill,
                               isUpArrow: isArrowUp,
                             ),
