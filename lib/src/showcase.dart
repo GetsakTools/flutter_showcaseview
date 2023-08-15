@@ -259,6 +259,8 @@ class Showcase extends StatefulWidget {
 
   final double toolTipArrowWidth;
 
+  final bool isTooltipOnCenter;
+
   const Showcase({
     required this.key,
     required this.descriptionWidget,
@@ -270,6 +272,7 @@ class Showcase extends StatefulWidget {
     this.tooltipScreenEdgePadding = 20,
     this.toolTipArrowHeight = 9,
     this.toolTipArrowWidth = 18,
+    this.isTooltipOnCenter = false,
     this.titleAlignment = TextAlign.start,
     this.descriptionAlignment = TextAlign.start,
     this.targetShapeBorder = const RoundedRectangleBorder(
@@ -360,6 +363,7 @@ class Showcase extends StatefulWidget {
         toolTipArrowHeight = 9,
         toolTipArrowWidth = 18,
         tooltipScreenEdgePadding = 20,
+        isTooltipOnCenter = false,
         descriptionWidget = null,
         titleAlignment = TextAlign.start,
         descriptionAlignment = TextAlign.start,
@@ -609,6 +613,7 @@ class _ShowcaseState extends State<Showcase> {
             toolTipArrowHeight: widget.toolTipArrowHeight,
             toolTipArrowWidth: widget.toolTipArrowWidth,
             tooltipScreenEdgePadding: widget.tooltipScreenEdgePadding,
+            isTooltipOnCenter: widget.isTooltipOnCenter,
           ),
         ],
       ],
