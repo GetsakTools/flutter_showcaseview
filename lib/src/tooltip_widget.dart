@@ -389,8 +389,8 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                 child: Container(
                   padding: widget.showArrow
                       ? EdgeInsets.only(
-                          top: paddingTop - (isArrowUp ? widget.toolTipArrowHeight : 0),
-                          bottom: paddingBottom - (isArrowUp ? 0 : widget.toolTipArrowHeight),
+                          top: paddingTop - (isArrowUp ? widget.toolTipArrowHeight - 10 : 0),
+                          bottom: paddingBottom - (isArrowUp ? 0 : widget.toolTipArrowHeight - 10),
                         )
                       : null,
                   child: Stack(
