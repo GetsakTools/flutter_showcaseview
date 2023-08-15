@@ -68,6 +68,7 @@ class ToolTipWidget extends StatefulWidget {
   final double toolTipArrowHeight;
   final double toolTipArrowWidth;
   final num tooltipScreenEdgePadding;
+  final bool isTooltipOnCenter;
 
   const ToolTipWidget({
     Key? key,
@@ -108,6 +109,7 @@ class ToolTipWidget extends StatefulWidget {
     this.toolTipArrowHeight = 9,
     this.toolTipArrowWidth = 18,
     this.tooltipScreenEdgePadding = 20,
+    this.isTooltipOnCenter = false,
   }) : super(key: key);
 
   @override
@@ -369,7 +371,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
       return Positioned(
         top: contentY,
         left: _getLeft(),
-        right: _getRight(),
+        right: widget.isTooltipOnCenter ? _getLeft() : _getRight(),
         child: ScaleTransition(
           scale: _scaleAnimation,
           alignment: widget.scaleAnimationAlignment ??
