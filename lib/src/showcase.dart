@@ -49,6 +49,8 @@ class Showcase extends StatefulWidget {
   /// Represents subject line of target widget
   final Widget? titleWidget;
 
+  final String? titleString;
+
   /// Represents actions for target
   final Widget? tailWidget;
 
@@ -59,6 +61,9 @@ class Showcase extends StatefulWidget {
 
   /// Represents summary description of target widget
   final Widget? descriptionWidget;
+
+
+  final String? descriptionString;
 
   /// ShapeBorder of the highlighted box when target widget will be showcased.
   ///
@@ -267,6 +272,8 @@ class Showcase extends StatefulWidget {
     required this.child,
     this.tailWidget,
     this.titleWidget,
+    this.descriptionString,
+    this.titleString,
     this.widgetWidth,
     this.toolTipStrokeWidth,
     this.tooltipScreenEdgePadding = 20,
@@ -357,6 +364,7 @@ class Showcase extends StatefulWidget {
         scaleAnimationAlignment = null,
         disableScaleAnimation = null,
         titleWidget = null,
+        titleString = '',
         tailWidget = null,
         widgetWidth = 320,
         toolTipStrokeWidth = 10,
@@ -365,6 +373,7 @@ class Showcase extends StatefulWidget {
         tooltipScreenEdgePadding = 20,
         isTooltipOnCenter = false,
         descriptionWidget = null,
+        descriptionString = '',
         titleAlignment = TextAlign.start,
         descriptionAlignment = TextAlign.start,
         titleTextStyle = null,
@@ -577,10 +586,12 @@ class _ShowcaseState extends State<Showcase> {
             position: position,
             offset: offset,
             screenSize: screenSize,
-            title: widget.titleWidget,
+            titleWidget: widget.titleWidget,
+            titleString: widget.titleString,
             tail: widget.tailWidget,
             titleAlignment: widget.titleAlignment,
-            description: widget.descriptionWidget,
+            descriptionWidget: widget.descriptionWidget,
+            descriptionString: widget.descriptionString,
             descriptionAlignment: widget.descriptionAlignment,
             titleTextStyle: widget.titleTextStyle,
             descTextStyle: widget.descTextStyle,

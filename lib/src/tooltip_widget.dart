@@ -34,10 +34,12 @@ class ToolTipWidget extends StatefulWidget {
   final GetPosition? position;
   final Offset? offset;
   final Size? screenSize;
-  final Widget? title;
+  final Widget? titleWidget;
+  final String? titleString;
   final Widget? tail;
   final TextAlign? titleAlignment;
-  final Widget? description;
+  final Widget? descriptionWidget;
+  final String? descriptionString;
   final TextAlign? descriptionAlignment;
   final TextStyle? titleTextStyle;
   final TextStyle? descTextStyle;
@@ -75,10 +77,12 @@ class ToolTipWidget extends StatefulWidget {
     required this.position,
     required this.offset,
     required this.screenSize,
-    required this.title,
+    required this.titleWidget,
+    required this.titleString,
     required this.tail,
     required this.titleAlignment,
-    required this.description,
+    required this.descriptionWidget,
+    required this.descriptionString,
     required this.titleTextStyle,
     required this.descTextStyle,
     required this.container,
@@ -163,16 +167,16 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
             .textTheme
             .titleSmall!
             .merge(TextStyle(color: widget.textColor));
-    final titleLength = widget.title == null
+    final titleLength = widget.titleString == null
         ? 0
-        : _textSize("tooltip", titleStyle).width +
+        : _textSize(widget.titleString ?? '', titleStyle).width +
             widget.tooltipPadding!.right +
             widget.tooltipPadding!.left +
             (widget.titlePadding?.right ?? 0) +
             (widget.titlePadding?.left ?? 0);
-    final descriptionLength = widget.description == null
+    final descriptionLength = widget.descriptionString == null
         ? 0
-        : (_textSize("description", descriptionStyle).width +
+        : (_textSize(widget.descriptionString ?? '', descriptionStyle).width +
             widget.tooltipPadding!.right +
             widget.tooltipPadding!.left +
             (widget.descriptionPadding?.right ?? 0) +
@@ -435,22 +439,22 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                               // margin: widget.tooltipMargin,
                               color: widget.tooltipBackgroundColor,
                               child: Column(
-                                crossAxisAlignment: widget.title != null
+                                crossAxisAlignment: widget.titleWidget != null
                                     ? CrossAxisAlignment.start
                                     : CrossAxisAlignment.center,
                                 children: <Widget>[
                                   const SizedBox(height: 15,),
-                                  if (widget.title != null)
+                                  if (widget.titleWidget!= null)
                                     Padding(
                                       padding: widget.titlePadding ??
                                           EdgeInsets.zero,
-                                      child: widget.title,
+                                      child: widget.titleWidget,
                                     ),
                                   const SizedBox(height: 15,),
                                   Padding(
                                     padding: widget.descriptionPadding ??
                                         EdgeInsets.zero,
-                                    child: widget.description,
+                                    child: widget.descriptionWidget,
                                   ),
                                   const SizedBox(height: 20,),
                                   if(widget.tail != null)
