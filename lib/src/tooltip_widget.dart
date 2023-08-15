@@ -64,6 +64,7 @@ class ToolTipWidget extends StatefulWidget {
   final TextDirection? titleTextDirection;
   final TextDirection? descriptionTextDirection;
   final double? widgetWidth;
+  final double? toolTipStrokeWidth;
 
   const ToolTipWidget({
     Key? key,
@@ -100,6 +101,7 @@ class ToolTipWidget extends StatefulWidget {
     this.titleTextDirection,
     this.descriptionTextDirection,
     this.widgetWidth = 320,
+    this.toolTipStrokeWidth = 10,
   }) : super(key: key);
 
   @override
@@ -399,7 +401,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                           child: CustomPaint(
                             painter: _Arrow(
                               strokeColor: widget.tooltipBackgroundColor!,
-                              strokeWidth: 10,
+                              strokeWidth: widget.toolTipStrokeWidth,
                               paintingStyle: PaintingStyle.fill,
                               isUpArrow: isArrowUp,
                             ),
