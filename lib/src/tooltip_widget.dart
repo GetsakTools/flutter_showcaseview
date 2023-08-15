@@ -65,6 +65,9 @@ class ToolTipWidget extends StatefulWidget {
   final TextDirection? descriptionTextDirection;
   final double? widgetWidth;
   final double? toolTipStrokeWidth;
+  final double toolTipArrowHeight;
+  final double toolTipArrowWidth;
+  final num tooltipScreenEdgePadding;
 
   const ToolTipWidget({
     Key? key,
@@ -102,6 +105,9 @@ class ToolTipWidget extends StatefulWidget {
     this.descriptionTextDirection,
     this.widgetWidth = 320,
     this.toolTipStrokeWidth = 10,
+    this.toolTipArrowHeight = 9,
+    this.toolTipArrowWidth = 18,
+    this.tooltipScreenEdgePadding = 20,
   }) : super(key: key);
 
   @override
@@ -120,7 +126,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
   late final Animation<double> _scaleAnimation;
 
   double tooltipWidth = 0;
-  double tooltipScreenEdgePadding = 20;
+  // double tooltipScreenEdgePadding = 20;
   double tooltipTextPadding = 15;
 
   TooltipPosition findPositionForContent(Offset position) {
@@ -170,8 +176,8 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
             (widget.descriptionPadding?.right ?? 0) +
             (widget.descriptionPadding?.left ?? 0));
     var maxTextWidth = max(titleLength, descriptionLength);
-    if (maxTextWidth > widget.screenSize!.width - tooltipScreenEdgePadding) {
-      tooltipWidth = widget.screenSize!.width - tooltipScreenEdgePadding;
+    if (maxTextWidth > widget.screenSize!.width - widget.tooltipScreenEdgePadding) {
+      tooltipWidth = widget.screenSize!.width - widget.tooltipScreenEdgePadding;
     } else {
       tooltipWidth = maxTextWidth + tooltipTextPadding;
     }
@@ -352,8 +358,8 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
       paddingBottom = 10;
     }
 
-    const arrowWidth = 18.0;
-    const arrowHeight = 9.0;
+    // const arrowWidth = 18.0;
+    // const arrowHeight = 9.0;
 
     if (!widget.disableScaleAnimation && widget.isTooltipDismissed) {
       _scaleAnimationController.reverse();
@@ -383,8 +389,8 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                 child: Container(
                   padding: widget.showArrow
                       ? EdgeInsets.only(
-                          top: paddingTop - (isArrowUp ? arrowHeight : 0),
-                          bottom: paddingBottom - (isArrowUp ? 0 : arrowHeight),
+                          top: paddingTop - (isArrowUp ? widget.toolTipArrowHeight : 0),
+                          bottom: paddingBottom - (isArrowUp ? 0 : widget.toolTipArrowHeight),
                         )
                       : null,
                   child: Stack(
@@ -396,8 +402,8 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                     children: [
                       if (widget.showArrow)
                         Positioned(
-                          left: _getArrowLeft(arrowWidth),
-                          right: _getArrowRight(arrowWidth),
+                          left: _getArrowLeft(widget.toolTipArrowHeight),
+                          right: _getArrowRight(widget.toolTipArrowHeight),
                           child: CustomPaint(
                             painter: _Arrow(
                               strokeColor: widget.tooltipBackgroundColor!,
@@ -405,16 +411,16 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                               paintingStyle: PaintingStyle.fill,
                               isUpArrow: isArrowUp,
                             ),
-                            child: const SizedBox(
-                              height: arrowHeight,
-                              width: arrowWidth,
+                            child: SizedBox(
+                              height: widget.toolTipArrowHeight,
+                              width: widget.toolTipArrowWidth,
                             ),
                           ),
                         ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: isArrowUp ? arrowHeight - 1 : 0,
-                          bottom: isArrowUp ? 0 : arrowHeight - 1,
+                          top: isArrowUp ? widget.toolTipArrowHeight - 1 : 0,
+                          bottom: isArrowUp ? 0 : widget.toolTipArrowHeight - 1,
                         ),
                         child: ClipRRect(
                           borderRadius: widget.tooltipBorderRadius ??
