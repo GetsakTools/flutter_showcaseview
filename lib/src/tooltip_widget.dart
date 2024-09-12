@@ -385,93 +385,87 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
               ),
           child: FractionalTranslation(
             translation: Offset(0.0, contentFractionalOffset as double),
-            child: SlideTransition(
-              position: Tween<Offset>(
-                begin: Offset(0.0, contentFractionalOffset / 10),
-                end: const Offset(0.0, 0.100),
-              ).animate(_movingAnimation),
-              child: Material(
-                type: MaterialType.transparency,
-                child: Container(
-                  padding: widget.showArrow
-                      ? EdgeInsets.only(
-                          // top: paddingTop - (isArrowUp ? widget.toolTipArrowHeight - 10 : 0),
-                          // bottom: paddingBottom - (isArrowUp ? 0 : widget.toolTipArrowHeight - 10),
-                        )
-                      : null,
-                  child: Stack(
-                    alignment: isArrowUp
-                        ? Alignment.topLeft
-                        : _getLeft() == null
-                            ? Alignment.bottomRight
-                            : Alignment.bottomLeft,
-                    children: [
-                      if (widget.showArrow)
-                        Positioned(
-                          left: _getArrowLeft(widget.toolTipArrowHeight),
-                          right: _getArrowRight(widget.toolTipArrowHeight),
-                          child: CustomPaint(
-                            painter: _Arrow(
-                              strokeColor: widget.tooltipBackgroundColor!,
-                              strokeWidth: widget.toolTipStrokeWidth ?? 10,
-                              paintingStyle: PaintingStyle.fill,
-                              isUpArrow: isArrowUp,
-                            ),
-                            child: SizedBox(
-                              height: widget.toolTipArrowHeight,
-                              width: widget.toolTipArrowWidth,
-                            ),
+            child: Material(
+              type: MaterialType.transparency,
+              child: Container(
+                padding: widget.showArrow
+                    ? const EdgeInsets.only(
+                        // top: paddingTop - (isArrowUp ? widget.toolTipArrowHeight - 10 : 0),
+                        // bottom: paddingBottom - (isArrowUp ? 0 : widget.toolTipArrowHeight - 10),
+                      )
+                    : null,
+                child: Stack(
+                  alignment: isArrowUp
+                      ? Alignment.topLeft
+                      : _getLeft() == null
+                          ? Alignment.bottomRight
+                          : Alignment.bottomLeft,
+                  children: [
+                    if (widget.showArrow)
+                      Positioned(
+                        left: _getArrowLeft(widget.toolTipArrowHeight),
+                        right: _getArrowRight(widget.toolTipArrowHeight),
+                        child: CustomPaint(
+                          painter: _Arrow(
+                            strokeColor: widget.tooltipBackgroundColor!,
+                            strokeWidth: widget.toolTipStrokeWidth ?? 10,
+                            paintingStyle: PaintingStyle.fill,
+                            isUpArrow: isArrowUp,
+                          ),
+                          child: SizedBox(
+                            height: widget.toolTipArrowHeight,
+                            width: widget.toolTipArrowWidth,
                           ),
                         ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: isArrowUp ? widget.toolTipArrowHeight - 1 : 0,
-                          bottom: isArrowUp ? 0 : widget.toolTipArrowHeight - 1,
-                        ),
-                        child: ClipRRect(
-                          borderRadius: widget.tooltipBorderRadius ??
-                              BorderRadius.circular(15.0),
-                          child: GestureDetector(
-                            onTap: widget.onTooltipTap,
-                            child: Container(
-                              width: widget.widgetWidth,
-                              padding: widget.tooltipPadding,
-                              // margin: widget.tooltipMargin,
-                              color: widget.tooltipBackgroundColor,
-                              child: Column(
-                                crossAxisAlignment: widget.titleWidget != null
-                                    ? CrossAxisAlignment.start
-                                    : CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  const SizedBox(height: 15,),
-                                  if (widget.titleWidget!= null)
-                                    Padding(
-                                      padding: widget.titlePadding ??
-                                          EdgeInsets.zero,
-                                      child: widget.titleWidget,
-                                    ),
-                                  const SizedBox(height: 15,),
+                      ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: isArrowUp ? widget.toolTipArrowHeight - 1 : 0,
+                        bottom: isArrowUp ? 0 : widget.toolTipArrowHeight - 1,
+                      ),
+                      child: ClipRRect(
+                        borderRadius: widget.tooltipBorderRadius ??
+                            BorderRadius.circular(15.0),
+                        child: GestureDetector(
+                          onTap: widget.onTooltipTap,
+                          child: Container(
+                            width: widget.widgetWidth,
+                            padding: widget.tooltipPadding,
+                            // margin: widget.tooltipMargin,
+                            color: widget.tooltipBackgroundColor,
+                            child: Column(
+                              crossAxisAlignment: widget.titleWidget != null
+                                  ? CrossAxisAlignment.start
+                                  : CrossAxisAlignment.center,
+                              children: <Widget>[
+                                const SizedBox(height: 15,),
+                                if (widget.titleWidget!= null)
                                   Padding(
-                                    padding: widget.descriptionPadding ??
+                                    padding: widget.titlePadding ??
                                         EdgeInsets.zero,
-                                    child: widget.descriptionWidget,
+                                    child: widget.titleWidget,
                                   ),
-                                  const SizedBox(height: 20,),
-                                  if(widget.tail != null)
-                                    Padding(
-                                      padding: widget.titlePadding ??
-                                          EdgeInsets.zero,
-                                      child: widget.tail,
-                                    ),
-                                  const SizedBox(height: 10,)
-                                ],
-                              ),
+                                const SizedBox(height: 15,),
+                                Padding(
+                                  padding: widget.descriptionPadding ??
+                                      EdgeInsets.zero,
+                                  child: widget.descriptionWidget,
+                                ),
+                                const SizedBox(height: 20,),
+                                if(widget.tail != null)
+                                  Padding(
+                                    padding: widget.titlePadding ??
+                                        EdgeInsets.zero,
+                                    child: widget.tail,
+                                  ),
+                                const SizedBox(height: 10,)
+                              ],
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
