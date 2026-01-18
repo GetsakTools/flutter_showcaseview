@@ -62,7 +62,6 @@ class Showcase extends StatefulWidget {
   /// Represents summary description of target widget
   final Widget? descriptionWidget;
 
-
   final String? descriptionString;
 
   /// ShapeBorder of the highlighted box when target widget will be showcased.
@@ -266,6 +265,8 @@ class Showcase extends StatefulWidget {
 
   final bool isTooltipOnCenter;
 
+  final bool tailSpacing;
+
   const Showcase({
     required this.key,
     required this.descriptionWidget,
@@ -320,6 +321,7 @@ class Showcase extends StatefulWidget {
     this.titleTextDirection,
     this.descriptionTextDirection,
     this.onBarrierClick,
+    this.tailSpacing = true,
   })  : height = null,
         width = null,
         container = null,
@@ -357,6 +359,7 @@ class Showcase extends StatefulWidget {
     this.disableDefaultTargetGestures = false,
     this.tooltipPosition,
     this.onBarrierClick,
+    this.tailSpacing = true,
   })  : showArrow = false,
         onToolTipClick = null,
         scaleAnimationDuration = const Duration(milliseconds: 300),
@@ -625,6 +628,7 @@ class _ShowcaseState extends State<Showcase> {
             toolTipArrowWidth: widget.toolTipArrowWidth,
             tooltipScreenEdgePadding: widget.tooltipScreenEdgePadding,
             isTooltipOnCenter: widget.isTooltipOnCenter,
+            tailSpacing: widget.tailSpacing,
           ),
         ],
       ],

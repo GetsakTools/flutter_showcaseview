@@ -71,6 +71,7 @@ class ToolTipWidget extends StatefulWidget {
   final double toolTipArrowWidth;
   final num tooltipScreenEdgePadding;
   final bool isTooltipOnCenter;
+  final bool tailSpacing;
 
   const ToolTipWidget({
     Key? key,
@@ -114,6 +115,7 @@ class ToolTipWidget extends StatefulWidget {
     this.toolTipArrowWidth = 18,
     this.tooltipScreenEdgePadding = 20,
     this.isTooltipOnCenter = false,
+    this.tailSpacing = true,
   }) : super(key: key);
 
   @override
@@ -182,7 +184,8 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
             (widget.descriptionPadding?.right ?? 0) +
             (widget.descriptionPadding?.left ?? 0));
     var maxTextWidth = max(titleLength, descriptionLength);
-    if (maxTextWidth > widget.screenSize!.width - widget.tooltipScreenEdgePadding) {
+    if (maxTextWidth >
+        widget.screenSize!.width - widget.tooltipScreenEdgePadding) {
       tooltipWidth = widget.screenSize!.width - widget.tooltipScreenEdgePadding;
     } else {
       tooltipWidth = maxTextWidth + tooltipTextPadding;
@@ -392,7 +395,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                     ? const EdgeInsets.only(
                         // top: paddingTop - (isArrowUp ? widget.toolTipArrowHeight - 10 : 0),
                         // bottom: paddingBottom - (isArrowUp ? 0 : widget.toolTipArrowHeight - 10),
-                      )
+                        )
                     : null,
                 child: Stack(
                   alignment: isArrowUp
@@ -438,27 +441,36 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                                   ? CrossAxisAlignment.start
                                   : CrossAxisAlignment.center,
                               children: <Widget>[
-                                const SizedBox(height: 15,),
-                                if (widget.titleWidget!= null)
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                if (widget.titleWidget != null)
                                   Padding(
-                                    padding: widget.titlePadding ??
-                                        EdgeInsets.zero,
+                                    padding:
+                                        widget.titlePadding ?? EdgeInsets.zero,
                                     child: widget.titleWidget,
                                   ),
-                                const SizedBox(height: 15,),
+                                const SizedBox(
+                                  height: 15,
+                                ),
                                 Padding(
                                   padding: widget.descriptionPadding ??
                                       EdgeInsets.zero,
                                   child: widget.descriptionWidget,
                                 ),
-                                const SizedBox(height: 20,),
-                                if(widget.tail != null)
+                                if (widget.tailSpacing)
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                if (widget.tail != null)
                                   Padding(
-                                    padding: widget.titlePadding ??
-                                        EdgeInsets.zero,
+                                    padding:
+                                        widget.titlePadding ?? EdgeInsets.zero,
                                     child: widget.tail,
                                   ),
-                                const SizedBox(height: 10,)
+                                const SizedBox(
+                                  height: 10,
+                                )
                               ],
                             ),
                           ),
